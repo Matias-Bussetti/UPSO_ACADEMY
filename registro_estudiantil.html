@@ -1,11 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UPSO Academy</title>
 </head>
+
 <body>
+    <h1>Registro de alumnos</h1>
+    <form action="" id="form-registro">
+
+        <label for="inp-nombre">NombreCompleto</label>
+        <input type="text" id="nombre-completo" placeholder="NombreCompleto" />
+     
+        <select name="Rol" id="select-rol">
+            <option value="0">Rol</option>
+            <option value="student">Estudiante</option>
+            <option value="admin">Admin</option>
+        </select>
+        <br />
+        <br />
+
+        <label for="inp-email">E-mail</label>
+        <input type="email" name="" id="email-alumno" placeholder="email-alumno" />
+        <br />
+        <br />
+
+       
+        <label for="inp-edad">Edad Alumno</label>
+        <input type="text" id="edad" placeholder="Edad" />
+
+        <br />
+        <br />
+
+        <label for=" select-pais">Pais</label>
+        <br>
+        <select name="paises" id="select-paises">
+            <option value="0">paises</option>
+            <option value="AR">Argentina</option>
+            <option value="URU">Uruguay</option>
+            <option value="PE">Perú</option>
+            <option value="CO">Colombia</option>
+            <option value="PAR">Paraguay</option>
+            <option value="VEN">Venezuela</option>
+        </select>
+
+        <div> <p>Si tu país no se encuentra dentro de la opciones,
+             contáctanos a <a href="">administraciones@upsoacademy.com</a> </p></div>
+        <br />
     
+        <label for=" select-pais">Cuatrimestre</label>
+        <input type="text " name="" id="input-cuatrimestre" placeholder="ej: 1C23,2C23..">
+   
+       
+        
+        <br />
+        <br />
+        <button type="submit">Registar</button>
+    </form>
 </body>
+<script src="/js/registro_estudiantil.js"></script>
+
 </html>
