@@ -1,0 +1,4 @@
+# Hay una clase por sitio/archivo/modulo
+# Los metodos static estan para poder ser llamados sin instanciar la clase.
+    En este caso lo usamos para poder generar usuarios sin repetir el codigo en los dos
+    modulos.
