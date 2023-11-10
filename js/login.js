@@ -1,5 +1,3 @@
-// import { RegistroEstudiantil  } from "./registro_estudiantil";
-
 class Login {
     // INP=>INPUT
     INP_USERNAME = document.getElementById('inp_username');
