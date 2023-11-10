@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -11,8 +12,11 @@
     <h1>Registro de alumnos</h1>
     <form action="" id="form-registro">
 
-        <label for="inp-nombre">NombreCompleto</label>
-        <input type="text" id="nombre-completo" placeholder="NombreCompleto" />
+        <label for="nombre">Nombre </label>
+        <input type="text" id="nombre" placeholder="Nombre/s " />
+
+        <label for="apellido">Apellido </label>
+        <input type="text" id="apellido" placeholder="Apellido" />
      
         <select name="Rol" id="select-rol">
             <option value="0">Rol</option>
@@ -22,19 +26,19 @@
         <br />
         <br />
 
-        <label for="inp-email">E-mail</label>
-        <input type="email" name="" id="email-alumno" placeholder="email-alumno" />
+        <label for="email-alumno">E-mail</label>
+        <input type="email" name="" id="email-alumno" placeholder="email@ejemplo" />
         <br />
         <br />
 
        
-        <label for="inp-edad">Edad Alumno</label>
+        <label for="edad">Edad Alumno</label>
         <input type="text" id="edad" placeholder="Edad" />
 
         <br />
         <br />
 
-        <label for=" select-pais">Pais</label>
+        <label for="select-paises">Pais</label>
         <br>
         <select name="paises" id="select-paises">
             <option value="0">paises</option>
@@ -50,8 +54,8 @@
              contáctanos a <a href="">administraciones@upsoacademy.com</a> </p></div>
         <br />
     
-        <label for=" select-pais">Cuatrimestre</label>
-        <input type="text " name="" id="input-cuatrimestre" placeholder="ej: 1C23,2C23..">
+        <label for="cuatrimestre">Cuatrimestre</label>
+        <input type="text " name="" id="cuatrimestre" placeholder="ej: 1C23,2C23..">
    
        
         
@@ -60,6 +64,6 @@
         <button type="submit"id="btn-registrar">Registar</button>
     </form>
 </body>
-<script src="/js/registro_estudiantil.js"></script>
+<script src="js/registro_estudiantil.js"></script>
 
 </html>
