@@ -46,8 +46,7 @@ const codCuatrimIni= document.getElementById('cuatrimestre').value;
 
 const nuevoEstudiante= RegistroEstudiantil.crearEstudiante(nombre, apellido, rol, email, edad , paisNac , codCuatrimIni);
 
-// al nuevo estudiante que estamos registrando le generamos un id
-nuevoEstudiante.id = RegistroEstudiantil.generarID(); 
+
 
 //pusheamos el estudiante al arreglo usuarios
 if(registrar.USUARIOS && registrar.USUARIOS.length < 10){
