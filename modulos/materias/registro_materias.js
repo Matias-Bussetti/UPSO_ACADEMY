@@ -1,7 +1,21 @@
 class Materias{
     MATERIAS =[];
 
+   
     constructor(){
+        const btn_alta = document.getElementById('btn-alta');
+        const btn_modificar=document.getElementById('btn-modificar')
+
+        btn_alta.addEventListener('click', e => {
+            e.preventDefault();
+            this.darAltaMateria();
+        });
+
+        btn_modificar.addEventListener('click', e =>{
+            e.preventDefault();
+            this.editarMateria();
+
+        });
 
     }
 
@@ -12,19 +26,24 @@ class Materias{
 
     }
     darAltaMateria() {
-        const materia= document.getElementById('input-materia')
-        const docente= document.getElementById('input-docente')
-        const horario= document.getElementById('input-horario')
 
-        const nuevaMateria = Materias.crearMateria(materia, docente, horario);
+        const materia= document.getElementById('input-materia').value
+        const docente= document.getElementById('input-docente').value
+        const horario= document.getElementById('input-horario').value
+        const mensaje = document.getElementById('div-mensajes');
+
+        const nuevaMateria = Materias.crearMateria (materia, docente, horario);
+
         if (this.MATERIAS && materia !== '' && docente !== '' && horario!== '' ) {
+
             this.MATERIAS.push(nuevaMateria);
 
-            containerMsgs.style = 'background-color: green';
-            containerMsgs.innerHTML = 'Materia REGISTRADa EXITOSAMENTE'
+            mensaje.style = 'background-color: green';
+            mensaje.innerHTML = 'MATERIA REGISTRADA EXITOSAMENTE'
+
         } else {
-            containerMsgs.style = 'background-color: red';
-            containerMsgs.innerHTML = 'NO SE REGISTRAR LA MATERIA'
+            mensaje.style = 'background-color: red';
+            mensaje.innerHTML = 'NO SE REGISTRÓ LA MATERIA'
         }
 
     };
@@ -36,9 +55,11 @@ class Materias{
     };
 
     mostrarInfoGeneralMaterias(){
+        
+    //const informacion= { info :this.darAltaMateria(), habilitacion: this.docente  ? "por hacer" : "hecha", /*cupo:, estudiantes:, emails: */};
 
-        //mostrar lo de dar alta + habilitacion docente ,cantidad y nombres de estudiantes y sus mails
-
+        //mostrar info de darAltaMAteria() + habilitacion docente ,cantidad y nombres de estudiantes y sus mails
+        //console.log(informacion)
     };
 
     //funcion reciclada
@@ -67,4 +88,8 @@ class Materias{
     visualizarInfoMateriasInscirpitas(){
 
     };
+
+
+    // fin de la clase
 }
+const materia1 = new Materias();

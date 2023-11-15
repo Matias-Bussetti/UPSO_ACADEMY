@@ -12,7 +12,7 @@ class RegistroEstudiantil {
 
         btn_materias.addEventListener('click',e =>{
             e.preventDefault();
-            window.location.href= 'materias.html';
+            window.location.href= '../materias/materias.html';
         })        
     }
 
