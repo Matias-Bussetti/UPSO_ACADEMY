@@ -11,6 +11,7 @@ class Login {
         usuarios.push(RegistroEstudiantil.crearUsuario('admin', 'c0ntr4s3ñ4', 'admin', '', 'ADMIN', 'admin@upsoa.com.ar'));
         usuarios.push(RegistroEstudiantil.crearEstudiante('student', 'c0ntr4s3ñ4', 'Pepe', 'Gonzalez', 'pepeg@gmail.com', 'STUDENT', 25, 'Argentina', '1C23'));
         localStorage.setItem('usersList', JSON.stringify(usuarios));
+        RegistroEstudiantil.guardarUsuarioStorage(RegistroEstudiantil.crearUsuario('admin'))
         
 
         // Submit login form

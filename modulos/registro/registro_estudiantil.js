@@ -37,8 +37,17 @@ class RegistroEstudiantil {
         return stringRandom;
     }
 
-    static guardarUsuariosStorage() {
+    static guardarUsuarioStorage(usuario) {
+        const usuariosStorage = JSON.parse(localStorage.getItem('usersList'));
+        let usuarioEncontrado = usuariosStorage.find(usr => usr.usuario === usuario.usuario);
 
+        if (!usuarioEncontrado) {
+            usuariosStorage.push(usuario);
+            localStorage.setItem('usersList', JSON.stringify(usuariosStorage))
+            console.log('Nuevo usuario creado')
+        } else {
+            console.log('El usuario ya existe')
+        }
     }
 
     // Obtiene los datos del formulario y genera un nuevo usuario.
