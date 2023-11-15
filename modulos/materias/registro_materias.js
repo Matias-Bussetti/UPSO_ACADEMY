@@ -17,14 +17,14 @@ class Materias{
         const horario= document.getElementById('input-horario')
 
         const nuevaMateria = Materias.crearMateria(materia, docente, horario);
-        if (this.MATERIAS ) {
+        if (this.MATERIAS && materia !== '' && docente !== '' && horario!== '' ) {
             this.MATERIAS.push(nuevaMateria);
 
             containerMsgs.style = 'background-color: green';
-            containerMsgs.innerHTML = 'USUARIO REGISTRADO EXITOSAMENTE'
+            containerMsgs.innerHTML = 'Materia REGISTRADa EXITOSAMENTE'
         } else {
             containerMsgs.style = 'background-color: red';
-            containerMsgs.innerHTML = 'NO SE PUEDEN REGISTAR MAS ALUMNOS'
+            containerMsgs.innerHTML = 'NO SE REGISTRAR LA MATERIA'
         }
 
     };
@@ -36,6 +36,8 @@ class Materias{
     };
 
     mostrarInfoGeneralMaterias(){
+
+        //mostrar lo de dar alta + habilitacion docente ,cantidad y nombres de estudiantes y sus mails
 
     };
 
