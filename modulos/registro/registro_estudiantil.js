@@ -13,18 +13,16 @@ class RegistroEstudiantil {
         btn_materias.addEventListener('click',e =>{
             e.preventDefault();
             window.location.href= 'materias.html';
-        })
-
-        
+        })        
     }
 
-    static crearUsuario(nombre, apellido, rol, email) {
-        const usr = { id: this.generarID(), nombre, apellido, rol, email };
+    static crearUsuario(usuario, password, nombre, apellido, rol, email) {
+        const usr = { id: this.generarID(), usuario, password, nombre, apellido, rol, email };
         return usr;
     }
 
-    static crearEstudiante(nombre, apellido, rol, email, edad, paisNac, codCuatrimIni) {
-        const usr = this.crearUsuario(nombre, apellido, rol, email);
+    static crearEstudiante(usuario, password, nombre, apellido, rol, email, edad, paisNac, codCuatrimIni) {
+        const usr = this.crearUsuario(usuario, password, nombre, apellido, rol, email);
         usr.edad = edad;
         usr.paisNac = paisNac;
         usr.codCuatrimIni = codCuatrimIni;
