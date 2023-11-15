@@ -3,11 +3,17 @@ class RegistroEstudiantil {
 
     constructor() {
         const btn_submit = document.getElementById('btn-registrar');
+        const btn_materias= document.getElementById('btn-reg-materias');
 
         btn_submit.addEventListener('click', e => {
             e.preventDefault();
             this.registarUsuario();
         });
+
+        btn_materias.addEventListener('click',e =>{
+            e.preventDefault();
+            window.location.href= 'materias.html';
+        })
 
         
     }
