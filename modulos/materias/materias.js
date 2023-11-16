@@ -17,8 +17,26 @@ class Materias{
                 this.listarMaterias()
         }
 
-        // Se dan de alta las materias por defecto
-        // this.MATERIAS.push(this.crearMateria())
+        if (!localStorage.getItem('materiasList')) {
+            // Al instanciarse la clase, se guardan los usuarios en el local storage
+            const storageMaterias = [];
+            storageMaterias.push(this.crearMateria('Frontend','Mariana','Lunes','19 a 21', 'por hacer', 1, ['Pepe'] , ['pepeg@gmail.com']));
+            storageMaterias.push(this.crearMateria('Backend','Luis','Martes','14 a 16', 'por hacer', 1, ['Pepe'] , ['pepeg@gmail.com']));
+            storageMaterias.push(this.crearMateria('Base de Datos','Laura','Miércoles','18 a 20', 'por hacer', 1, ['Pepe'] , ['pepeg@gmail.com']));
+            storageMaterias.push(this.crearMateria('Testing','Jose','Jueves','18 a 20', 'por hacer', 1, ['Pepe'] , ['pepeg@gmail.com']));
+            storageMaterias.push(this.crearMateria('Infraestructura','Belen','Viernes','14 a 18', 'por hacer', 1, ['Pepe'] , ['pepeg@gmail.com']));
+            storageMaterias.push(this.crearMateria('Seguridad','Gaston','Lunes','14 a 16', 'por hacer', 1, ['Pepe'] , ['pepeg@gmail.com']));
+            storageMaterias.push(this.crearMateria('Agile','Celeste','Martes','20 a 22', 'por hacer', 1, ['Pepe'] , ['pepeg@gmail.com']));
+
+            localStorage.setItem('materiasList', JSON.stringify(storageMaterias));
+           
+           
+        }
+        this.listarMaterias();
+      
+        //this.MATERIAS.push(this.crearMateria('Fronted','Mariana','Lunes','19 a 21', 'por hacer', 1, ['Pepe'] , ['pepeg@gmail.com']));
+       
+
 
         btn_alta.addEventListener('click', e => {
             e.preventDefault();
@@ -33,10 +51,11 @@ class Materias{
 
     //funciones del Admin
     crearMateria(nombre, docente, dia, horario, habilitacion, cantInscritos, nombInscritos, emailInscritos){
-        const materia = { id: this.generarID(), nombre, docente, dia, horario, habilitacion, 
+        const materia = { id: Materias.generarID(), nombre, docente, dia, horario, habilitacion, 
             cantInscritos, nombInscritos, emailInscritos};
         return materia;
     }
+
 
     darAltaMateria() {
 
@@ -78,21 +97,36 @@ class Materias{
     };
 
     listarMaterias() {
+        console.log('a')
+        const lista_materias= JSON.parse(localStorage.getItem('materiasList'));
+        const materias_container = document.getElementById('lista_materias');
 
-        const container = document.createElement('div')
-        const h4 = document.createElement('h4');
-        const btn = document.createElement('button');
+        lista_materias.forEach(materia => {
+            
+            const container = document.createElement('div')
+            const h4 = document.createElement('h4');
+            const btn = document.createElement('button');
+            const p_docente= document.createElement('p')
+            const p_horario= document.createElement('p')
 
-        container.className = 'card_materia'
+            container.className = 'card_materia'
 
-        h4.innerHTML = 'Backend'
-        btn.innerHTML = 'Editar';
+             h4.innerHTML = materia.nombre;
+             p_docente.innerHTML = materia.docente;
+             p_horario. innerHTML = materia.dia + ' ' + materia.horario + 'hrs ARG';
 
-        btn.value = ''  // Aca va el id de cada materia
+             btn.innerHTML = 'Editar';
+
+        btn.value = materia.id  // Aca va el id de cada materia
 
         container.appendChild(h4);
+        container.appendChild(p_docente);
+        container.appendChild(p_horario);
         container.appendChild(btn)
-        document.getElementById('lista_materias').appendChild(container)
+        materias_container.appendChild(container)
+
+        });
+        
     }
 
     //funcion reciclada
