@@ -16,6 +16,7 @@ class Login {
             RegistroEstudiantil.guardarUsuarioStorage(RegistroEstudiantil.crearUsuario('admin'))
         }
         
+        
         // Submit login form
         this.BTN_SUBMIT.addEventListener('click', e => {
             e.preventDefault();
