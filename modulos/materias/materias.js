@@ -30,23 +30,21 @@ class Materias{
 
             localStorage.setItem('materiasList', JSON.stringify(storageMaterias));
            
-           
         }
+
+        // Se muestran las materias
         this.listarMaterias();
-      
-        //this.MATERIAS.push(this.crearMateria('Fronted','Mariana','Lunes','19 a 21', 'por hacer', 1, ['Pepe'] , ['pepeg@gmail.com']));
        
-
-
         btn_alta.addEventListener('click', e => {
             e.preventDefault();
             this.darAltaMateria();
-        });
 
-        // btn_modificar.addEventListener('click', e => {
-        //     e.preventDefault();
-        //     this.editarMateria();
-        // });
+            if (this.MATERIA_SELECCIONADA) {
+                return;
+            }
+
+
+        });
     }
 
     //funciones del Admin
@@ -98,32 +96,38 @@ class Materias{
 
     listarMaterias() {
         console.log('a')
-        const lista_materias= JSON.parse(localStorage.getItem('materiasList'));
+        const lista_materias = JSON.parse(localStorage.getItem('materiasList'));
         const materias_container = document.getElementById('lista_materias');
 
         lista_materias.forEach(materia => {
-            
+
             const container = document.createElement('div')
             const h4 = document.createElement('h4');
             const btn = document.createElement('button');
-            const p_docente= document.createElement('p')
-            const p_horario= document.createElement('p')
+            const p_docente = document.createElement('p')
+            const p_horario = document.createElement('p')
 
             container.className = 'card_materia'
 
-             h4.innerHTML = materia.nombre;
-             p_docente.innerHTML = materia.docente;
-             p_horario. innerHTML = materia.dia + ' ' + materia.horario + 'hrs ARG';
+            h4.innerHTML = materia.nombre;
+            p_docente.innerHTML = materia.docente;
+            p_horario.innerHTML = materia.dia + ' ' + materia.horario + 'hrs ARG';
 
-             btn.innerHTML = 'Editar';
+            btn.innerHTML = 'Editar';
 
-        btn.value = materia.id  // Aca va el id de cada materia
+            btn.value = materia.id  // Aca va el id de cada materia
 
-        container.appendChild(h4);
-        container.appendChild(p_docente);
-        container.appendChild(p_horario);
-        container.appendChild(btn)
-        materias_container.appendChild(container)
+            btn.addEventListener('click', e => {
+                // Toma el id de la materia seleccionada
+                const selectedID = e.target.value;
+                // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            });
+
+            container.appendChild(h4);
+            container.appendChild(p_docente);
+            container.appendChild(p_horario);
+            container.appendChild(btn)
+            materias_container.appendChild(container)
 
         });
         
@@ -154,4 +158,7 @@ class Materias{
 
     // fin de la clase
 }
-const materia1 = new Materias();
+
+if (window.location.href.toString().includes('materias.html')) {
+    const materia1 = new Materias();
+}
