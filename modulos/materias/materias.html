@@ -7,31 +7,56 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 <body>
-
-        <h1>Materias</h1>
-    <label for="input-materia"> Materia</label>
-    
-    <input type="text"  name="materia" id="input-materia">
-    <br>
-    <label for="input-docente"> Docente</label>
-    
-    <input type="text" name="docente" id="input-docente">
-    <br>
-    <label for="input-horario"> Horario</label>
-    <input type="text" name="horario" id="input-horario">
-
-    <br> <br>
-    <button type="submit" id="btn-alta"> Dar Alta</button>   <button type="button" id="btn-modificar"> Modificar</button>
-
-    <br> <br>
-    <div id="div-mensajes">
-        
+    <h1>Materias</h1>
+    <div id="container_materias_admin">
+        <div id="lista_materias">
+            <div class="card_materia">
+                <h4>Frontend</h4>
+                <p>Prof.: Mariana</p>
+                <p>Lunes - 18 a 20hrs ARG</p>
+                <button value="0">Editar</button>
+            </div>
+        </div>
+        <div id="lista_materias_disponibles">
+            
+        </div>
+        <div id="ab_materias">
+            <form id="form_materias">
+                <label for="input-materia"> Materia</label>
+                
+                <input type="text"  name="materia" id="input-materia">
+                <br>
+                <label for="input-docente"> Docente</label>
+                
+                <input type="text" name="docente" id="input-docente">
+                <br>
+                <label for="input-horario"> Horario</label>
+                <input type="text" name="horario" id="input-horario">
+                
+                <br>
+                <label for="select-dias"> Dia</label>
+                <select name="select-dias" id="select-dias">
+                    <option value="Lunes">Lunes</option>
+                    <option value="Martes">Martes</option>
+                    <option value="Miercoles">Miercoles</option>
+                    <option value="Jueves">Jueves</option>
+                    <option value="Viernes">Viernes</option>
+                    <option value="Sabado">Sabado</option>
+                    <option value="Domingo">Domingo</option>
+                </select>
+            
+                <br> <br>
+                <input type="submit" id="btn-alta" value="Dar Alta">
+            
+                <br> <br>
+                <div id="div-mensajes">
+                    
+                </div>
+            </form>
+        </div>
     </div>
-    
 
-    <a href="../registro/registro_estudiantil.html">Volver </a>
-    
+    <a href="../registro/registro_estudiantil.html">Registro Estudiantil</a>
 </body>
-
-<script src="/materias/registro_materias.js"></script>
+<script src="materias.js"></script>
 </html>

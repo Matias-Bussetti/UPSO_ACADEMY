@@ -2,6 +2,13 @@ class RegistroEstudiantil {
     USUARIOS = [];
 
     constructor() {
+        // Si el usuario loggeado no es admin, redirige a login
+        const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+        if (loggedUser && loggedUser.rol !== 'ADMIN') {
+            window.location.href = 'http://127.0.0.1:5500/modulos/login/login.html';
+            console.log('not admin')
+        }
+
         const btn_submit = document.getElementById('btn-registrar');
         const btn_materias= document.getElementById('btn-reg-materias');
 
@@ -15,6 +22,7 @@ class RegistroEstudiantil {
             window.location.href= '../materias/materias.html';
         });
 
+        // si se da de alta un usuario desde otra pagina no se actualiza
         this.USUARIOS = JSON.parse(localStorage.getItem("usersList"));
     }
 
@@ -66,6 +74,8 @@ class RegistroEstudiantil {
         const paisNac = document.getElementById('select-paises').value;
         const codCuatrimIni = document.getElementById('cuatrimestre').value;
 
+        this.USUARIOS = JSON.parse(localStorage.getItem("usersList"));
+
         // Comprobar que no se repita el email
         
         //pusheamos el estudiante al arreglo usuarios
@@ -73,7 +83,7 @@ class RegistroEstudiantil {
             const nuevoEstudiante = RegistroEstudiantil.crearEstudiante(usuario, contrasenia, nombre, apellido, rol, email, edad, paisNac, codCuatrimIni);
             this.USUARIOS.push(nuevoEstudiante);
             localStorage.setItem('usersList', JSON.stringify(this.USUARIOS));
-            
+
             containerMsgs.style = 'background-color: green';
             containerMsgs.innerHTML = 'USUARIO REGISTRADO EXITOSAMENTE';
         } else {

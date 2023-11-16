@@ -6,14 +6,16 @@ class Login {
     P_MSG_DISPLAY = document.getElementById('msg_display');
 
     constructor() {
-        // Al instanciarse la clase, se guardan los usuarios en el local storage
-        const usuarios = []
-        usuarios.push(RegistroEstudiantil.crearUsuario('admin', 'c0ntr4s3ñ4', 'admin', '', 'ADMIN', 'admin@upsoa.com.ar'));
-        usuarios.push(RegistroEstudiantil.crearEstudiante('student', 'c0ntr4s3ñ4', 'Pepe', 'Gonzalez', 'pepeg@gmail.com', 'STUDENT', 25, 'Argentina', '1C23'));
-        localStorage.setItem('usersList', JSON.stringify(usuarios));
-        RegistroEstudiantil.guardarUsuarioStorage(RegistroEstudiantil.crearUsuario('admin'))
+        // Comprueba si existen usuarios
+        if (!localStorage.getItem('usersList')) {
+            // Al instanciarse la clase, se guardan los usuarios en el local storage
+            const usuarios = []
+            usuarios.push(RegistroEstudiantil.crearUsuario('admin', 'c0ntr4s3ñ4', 'admin', '', 'ADMIN', 'admin@upsoa.com.ar'));
+            usuarios.push(RegistroEstudiantil.crearEstudiante('student', 'c0ntr4s3ñ4', 'Pepe', 'Gonzalez', 'STUDENT', 'pepeg@gmail.com', 25, 'Argentina', '1C23'));
+            localStorage.setItem('usersList', JSON.stringify(usuarios));
+            RegistroEstudiantil.guardarUsuarioStorage(RegistroEstudiantil.crearUsuario('admin'))
+        }
         
-
         // Submit login form
         this.BTN_SUBMIT.addEventListener('click', e => {
             e.preventDefault();
@@ -28,7 +30,7 @@ class Login {
 
                 // Redireccionamos al sitio correspondiente
                 setTimeout(() => {
-                    window.location.href = 'http://127.0.0.1:5500/modulos/registro/registro_estudiantil.html'
+                    window.location.href = 'http://127.0.0.1:5500/modulos/materias/materias.html'
                 }, 3000);
             }
 
