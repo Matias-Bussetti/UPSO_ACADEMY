@@ -54,9 +54,11 @@ class RegistroEstudiantil {
         if (!usuarioEncontrado) {
             usuariosStorage.push(usuario);
             localStorage.setItem('usersList', JSON.stringify(usuariosStorage))
-            console.log('Nuevo usuario creado')
+            // console.log('Nuevo usuario creado')
+            return {msg: 'USUARIO REGISTRADO EXITOSAMENTE'};
         } else {
-            console.log('El usuario ya existe')
+            // console.log('El usuario ya existe')
+            return {msg: 'EL USUARIO YA EXISTE'};
         }
     }
 
@@ -74,24 +76,31 @@ class RegistroEstudiantil {
         const paisNac = document.getElementById('select-paises').value;
         const codCuatrimIni = document.getElementById('cuatrimestre').value;
 
-        this.USUARIOS = JSON.parse(localStorage.getItem("usersList"));
+        // this.USUARIOS = JSON.parse(localStorage.getItem("usersList"));
+        const usuariosStorage = JSON.parse(localStorage.getItem("usersList"));
 
-        // Comprobar que no se repita el email
+        // Comprueba que se hayan cargado los campos
+        if (!nombre || !apellido || !usuario || !contrasenia ||  !email || !rol || !email || !edad || !paisNac || !codCuatrimIni) {
+            containerMsgs.style = 'background-color: red';
+            containerMsgs.innerHTML = 'POR FAVOR COMPLETE TODOS LOS CAMPOS';
+            return;
+        }
         
         //pusheamos el estudiante al arreglo usuarios
-        if (this.USUARIOS && this.USUARIOS.length < 10) {
+        if (usuariosStorage && usuariosStorage.length <= 10) {
             const nuevoEstudiante = RegistroEstudiantil.crearEstudiante(usuario, contrasenia, nombre, apellido, rol, email, edad, paisNac, codCuatrimIni);
-            this.USUARIOS.push(nuevoEstudiante);
-            localStorage.setItem('usersList', JSON.stringify(this.USUARIOS));
+            const res = RegistroEstudiantil.guardarUsuarioStorage(nuevoEstudiante);
+            // usuariosStorage.push(nuevoEstudiante);
+            // localStorage.setItem('usersList', JSON.stringify(usuariosStorage));
 
             containerMsgs.style = 'background-color: green';
-            containerMsgs.innerHTML = 'USUARIO REGISTRADO EXITOSAMENTE';
+            containerMsgs.innerHTML = res.msg;
         } else {
             containerMsgs.style = 'background-color: red';
             containerMsgs.innerHTML = 'NO SE PUEDEN REGISTAR MAS ALUMNOS';
         }
 
-        console.log(this.USUARIOS)
+        console.log(usuariosStorage)
         formulario.reset();
     }
 }
