@@ -14,18 +14,18 @@
     <form action="" id="form-registro">
 
         <label for="nombre">Nombre </label>
-        <input type="text" id="nombre" placeholder="Nombre/s " />
+        <input type="text" id="nombre" placeholder="Nombre/s " required />
 
         <label for="apellido">Apellido </label>
-        <input type="text" id="apellido" placeholder="Apellido" />
+        <input type="text" id="apellido" placeholder="Apellido" required />
         <br>
         <br>
 
         <label for="usuario">Nombre de usuario </label>
-        <input type="text" id="usuario" placeholder="Nobre de usuario " />
+        <input type="text" id="usuario" placeholder="Nobre de usuario "  required/>
 
         <label for="contrasenia">Contrasena </label>
-        <input type="password" id="contrasenia" placeholder="Contrasena" />
+        <input type="password" id="contrasenia" placeholder="Contrasena" required />
         <br>
         <br>
 
@@ -38,13 +38,13 @@
         <br />
 
         <label for="email-alumno">E-mail</label>
-        <input type="email" name="" id="email-alumno" placeholder="email@ejemplo" />
+        <input type="email" name="" id="email-alumno" placeholder="email@ejemplo" required/>
         <br />
         <br />
 
        
         <label for="edad">Edad Alumno</label>
-        <input type="number" id="edad" placeholder="Edad" />
+        <input type="number" id="edad" placeholder="Edad"  required/>
 
         <br />
         <br />
@@ -64,7 +64,14 @@
         <br />-->
     
         <label for="cuatrimestre">Cuatrimestre</label>
-        <input type="text " name="" id="cuatrimestre" placeholder="ej: 1C23,2C23..">
+    
+        <select name="paises" id="cuatrimestre">
+            <option value="1C23" >1C23</option>
+            <option value="2C23"selected>2C23</option>
+            <option value="1C24">"1C24</option>
+            <option value="2C24">2C24</option>
+            
+        </select>
 
         <br />
         <br />
