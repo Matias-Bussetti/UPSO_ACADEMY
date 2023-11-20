@@ -57,7 +57,8 @@ class Login {
         // console.log(usuario)
 
         if (usuario && usuario.password === password) {
-            return {valido: true, msg: "credenciales validas", usuario: {usuario: usuario.usuario, rol: usuario.rol}};
+            return {valido: true, msg: "credenciales validas", usuario: {usuario: usuario.usuario, rol: usuario.rol, nombre: usuario.nombre, apellido: usuario.apellido
+            , email: usuario.email}};
         }
 
         return {valido: false, msg: "usuario o contraseña incorrectos"};

@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="/modulos/materias/style.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <h4 id="titulo-nav">Panel Admin</h4>
+            <div id="panel-datos-usuario"></div>
+            <li>  <input type="button" id="cerrar-sesion" value="Cerrar sesión">
+            </li>
+        </nav>
+    </header> 
+
+    <br>
+
     <h1>Materias</h1>
     <div id="container_materias_admin">
 
@@ -54,19 +65,26 @@
                     <option value="Domingo">Domingo</option>
                 </select>
                 <br>
+                <label for="select-habilitacion"> Habilitacion</label>
+                <select name="select-habilitacion" id="select-habilitacion">
+                    <option value="Por hacer">Por hacer</option>
+                    <option value="Haciendo">Haciendo</option>
+                    <option value="Hecha">Hecha</option>
+                </select>
+                <br>
                 
                 <div id="lista-alumnos"></div>
 
                 <input type="submit" id="btn-alta" value="Dar Alta">
                 <br>
-                <div id="div-mensajes">
-                    
-                </div>
             </form>
+        </div>
+        <div id="div-mensajes">
+            
         </div>
     </div>
 
-    <a href="../registro/registro_estudiantil.html">Registro Estudiantil</a>
+    <a href="../registro/registro_estudiantil.html" id="link-registro">Registro Estudiantil</a>
 </body>
 <script src="materias.js"></script>
 </html>
