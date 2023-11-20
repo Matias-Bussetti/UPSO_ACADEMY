@@ -37,8 +37,10 @@
                 
                 <input type="text" name="docente" id="input-docente" required>
                 <br>
-                <label for="input-horario"> Horario</label>
-                <input type="text" name="horario" id="input-horario" required>
+                <label for="input-horario"> Horario de</label>
+                <input type="number" name="input-horario" id="input-horario" required>
+                <label for="input-horario-fin"> a</label>
+                <input type="number" name="input-horario-fin" id="input-horario-fin" required>
                 
                 <br>
                 <label for="select-dias"> Dia</label>
@@ -51,11 +53,12 @@
                     <option value="Sabado">Sabado</option>
                     <option value="Domingo">Domingo</option>
                 </select>
-            
-                <br> <br>
+                <br>
+                
+                <div id="lista-alumnos"></div>
+
                 <input type="submit" id="btn-alta" value="Dar Alta">
-            
-                <br> <br>
+                <br>
                 <div id="div-mensajes">
                     
                 </div>
