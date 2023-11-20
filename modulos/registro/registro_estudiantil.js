@@ -24,6 +24,43 @@ class RegistroEstudiantil {
 
         // si se da de alta un usuario desde otra pagina no se actualiza
         this.USUARIOS = JSON.parse(localStorage.getItem("usersList"));
+
+
+        // funcion para mostrar y ocultar el formulario -------------------
+
+        const botonShow= document.getElementById('btn-mostrarform');
+        const formulario= document.getElementById('form-registro');
+        formulario.style.display= "none";
+
+        botonShow.addEventListener('click',mostrarForm);
+
+        function mostrarForm() {
+            
+            if (formulario.style.display === "none" || formulario.style.display === "") {
+                formulario.style.display = "block"; 
+            } else {
+                formulario.style.display = "none";
+            }
+        }
+        
+        //BOTON DE "CERRAR SESION"
+       
+        const btncerrar = document.getElementById('cerrar-sesion');
+
+        btncerrar.addEventListener('click', cerrarSesion);
+        
+        function cerrarSesion() {
+            const confirmacion = window.confirm('¿Deseas cerrar sesión?');
+        
+            if (confirmacion) {
+                // Redirigir al usuario al archivo index.html
+                window.location.href = 'http://127.0.0.1:5500/index.html'; // Ruta relativa
+            }
+        }
+        
+        
+        //-------------------------------------------------------
+
     }
 
     static crearUsuario(usuario, password, nombre, apellido, rol, email) {

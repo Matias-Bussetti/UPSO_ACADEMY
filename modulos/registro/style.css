@@ -1,0 +1,169 @@
+body {
+  
+    background-color: #f8f9fa;
+    margin: 20px;
+    
+}
+
+h1 {
+    text-align: center;
+    color: #424242;
+    font-size: bold;
+}
+
+
+/* NAV BAR ESTILOS*/
+
+
+
+
+/* Estilo del Navbar */
+header {
+    background-image: linear-gradient(to right, #ed6e6e 0%, #ec8c69 100%);
+    width: 100%;
+    height: 80px;
+    
+}
+
+nav  {
+    list-style-type: none;
+    margin: 0;
+    padding: 15px;
+    color: #fff;
+    display: flex; /* Añadir esta línea para utilizar flexbox */
+    justify-content: space-between;
+    font-size: 15px;
+
+}
+
+
+/* ----- ------- ------- --- */
+
+form {
+    max-width: 600px;
+    margin: auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+
+/*boton de registro del formulario*/
+#btn-registrar {
+   
+    color: #1a1919;
+    cursor: pointer;
+}
+
+#btn-registrar:hover {
+    background-color: #101111;
+    color: #fff;
+}
+
+#container-msgs {
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+
+
+
+/*div de borones formulario(hide) y boton materias direccionado*/
+
+.div-materias {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 500px;
+    margin-left:auto;
+    margin-right:auto;
+    background-image: linear-gradient(to right, #1d1d1d 0%, #304352 100%);
+    padding:50px;
+   position:static;
+}
+
+/*boton de registrar materias*/
+#btn-reg-materias {
+    background-color:  #ec8c69 ;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    position: sticky;
+    border: none;
+}
+
+
+#btn-reg-materias:hover {
+    background-color: rgb(216, 235, 253);
+    color:#101111;
+}
+
+
+/*boton show formulario*/
+#btn-mostrarform{
+    position: static;
+    margin-bottom:10px;
+    background-color: #ec8c69;
+    color: white;
+    border:none;
+}
+#btn-mostrarform:hover{
+    background-color: rgb(216, 235, 253);
+   color:#101111;
+}
+
+
+
+/*details*/
+
+/*details{
+    border:#f1eaea 0.1px solid;
+    padding: 25px;
+    background-color:#f74c39;
+    margin-top: 50px;
+  
+  
+    
+}
+details:hover{
+    background-color:  #242424;
+}
+summary{
+    color: white;
+}*/
+
+
+
+
+/* boton cerrar sesion*/
+#cerrar-sesion{
+    padding: 15px;
+    width: 120px;
+    float: right;
+
+    border-radius: 5px;
+    border: none;
+    background-color: #101111;
+    color: #fff;
+}
+#cerrar-sesion:hover{
+    color:black;
+    background-color: #fff;
+}

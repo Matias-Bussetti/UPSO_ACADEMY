@@ -38,6 +38,19 @@ class Login {
         });
     }
 
+         // quise implementar esto para que cambie de ventana pero no me funciono chequealo por las dudas.
+         //si cmabio la ruta del window locatio para admin no hay problema pero para studen si.
+    /*setTimeout(() => {
+        if (loggedUser.rol === 'admin'){
+        window.location.href = 'http://127.0.0.1:5500/modulos/registro/registro_estudiantil.html'
+
+        }else{
+        window.location.href = 'http://127.0.0.1:5500/modulos/materias/materias.html'
+
+        }
+    }, 3000);
+}*/
+
     validarUsuario(usrName, password) {
         const usuarios = JSON.parse(localStorage.getItem('usersList'));
         const usuario = usuarios.find(usr => usr.usuario === usrName);

@@ -7,10 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UPSO Academy</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/modulos/registro/style.css">
 </head>
 
 <body>
+     <header>
+        <nav>
+
+            <h4>Panel Admin</h4>
+            <li>  <input type="button" id="cerrar-sesion" value="Cerrar sesión">
+            </li>
+           
+        </nav>
+
+    </header> 
+
+    
+    <br>
+
+<!-- <details > <summary>Formulario de registro</summary> -->
+
+
     <h1>Registro de alumnos</h1>
+    <!-- boton para  ir a dar de alta a las materias-->
+ 
+    <div class="div-materias"> 
+        <input type="button" name="" id="btn-mostrarform" value="Formulario de registro">
+        <input type="button" id="btn-reg-materias" name="" value="Registro de materias">
+       
+     </div>
+
+
+    
     <form action="" id="form-registro">
 
         <label for="nombre">Nombre </label>
@@ -25,7 +53,7 @@
         <input type="text" id="usuario" placeholder="Nobre de usuario "  required/>
 
         <label for="contrasenia">Contrasena </label>
-        <input type="password" id="contrasenia" placeholder="Contrasena" required />
+        <input type="password" id="contrasenia" placeholder="Contrasena" required  />
         <br>
         <br>
 
@@ -38,6 +66,7 @@
         <br />
 
         <label for="email-alumno">E-mail</label>
+
         <input type="email" name="" id="email-alumno" placeholder="email@ejemplo" required/>
         <br />
         <br />
@@ -75,18 +104,24 @@
 
         <br />
         <br />
-        <input type="submit" value="Registrar" id="btn-registrar">
-        <!-- <button type="submit"id="btn-registrar">Registar</button> -->
-    </form>
-    <div id="container-msgs">
-        
-    </div>
+        <!-- boton para registrar los datos-->
+        <input type="submit" value="Registrar" id="btn-registrar" class="btn btn-outline-dark">
 
-    <!-- boton para  ir a dar de alta a las materias-->
-<br>
-    <div class="div-materias"> 
-        <input type="button" id="btn-reg-materias" name="" value="Registro de materias">
-    </div>
+        <!-- div para mostrar mensaje de error-->
+        <div id="container-msgs">
+        
+        </div>
+    
+       
+    </form>
+    
+    
+<!-- </details> -->
+
+
+    
+
+
     
 </body>
 <script src="registro_estudiantil.js"></script>
