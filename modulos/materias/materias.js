@@ -146,13 +146,15 @@ class Materias{
                 // Toma el id de la materia seleccionada
                 const selectedID = e.target.value;
 
+                this.cargarDatosForm();
+
                 // Si la materia seleccionada ya se encontraba seleccionada, se elimina la seleccion
                 if (selectedID === this.MATERIA_SELECCIONADA) {
                     this.MATERIA_SELECCIONADA = undefined;
-                    this.cargarDatosForm();
+                    // this.cargarDatosForm();
                 } else {
                     this.MATERIA_SELECCIONADA = selectedID;
-                    this.cargarDatosForm(materia.nombre, materia.docente, materia.horarioIni, materia.horarioFin, materia.dia, materia.nombInscritos, materia.emailInscritos);
+                    this.cargarDatosForm(materia.nombre, materia.docente, materia.horarioIni, materia.horarioFin, materia.dia, materia.nombInscritos, materia.emailInscritos, materia.cantInscritos);
                 }
                 console.log(`Selected id ${selectedID}, MATERIA_SELECCIONADA ${this.MATERIA_SELECCIONADA}`);
             });
@@ -165,7 +167,7 @@ class Materias{
         });
     }
 
-    cargarDatosForm(nombre, docente, horarioIni, horarioFin, dia, nombInscritos, emailInscritos) {
+    cargarDatosForm(nombre, docente, horarioIni, horarioFin, dia, nombInscritos, emailInscritos, cantAlumnos) {
         const in_materia = document.getElementById('input-materia');
         const in_docente = document.getElementById('input-docente');
         const in_horarioIni = document.getElementById('input-horario');
@@ -173,7 +175,7 @@ class Materias{
         const in_dia = document.getElementById('select-dias');
         const div_listaAlumnos = document.getElementById('lista-alumnos');
     
-        if (nombre && docente && horarioIni && horarioFin && dia && nombInscritos && emailInscritos) {
+        if (nombre && docente && horarioIni && horarioFin && dia && nombInscritos && emailInscritos && cantAlumnos) {
             in_materia.value = nombre;
             in_docente.value = docente;
             in_horarioIni.value = horarioIni;
@@ -182,7 +184,7 @@ class Materias{
             
             // Se genera el encabezado
             const h5 = document.createElement('h5');
-            h3.innerHTML = 'Alumnos';
+            h5.innerHTML = `Alumnos: ${cantAlumnos}`;
             div_listaAlumnos.appendChild(h5);
 
             // Se listan los datos de los alumnos 
