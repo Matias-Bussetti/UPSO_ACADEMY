@@ -1,0 +1,4 @@
+Alumno para inscribirse
+    #- Maximo de 7 estudiantes por materia
+    - Si el  estudiante es mayor de 35 años, puede inscribir hasta 6 materias en el mismo cuatrimestre, de lo contrario hasta 4
+    #- No se puede inscribir dos veces en la misma materia

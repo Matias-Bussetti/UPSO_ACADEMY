@@ -20,13 +20,14 @@ class Materias{
         if (!localStorage.getItem('materiasList')) {
             // Al instanciarse la clase, se guardan los usuarios en el local storage
             const storageMaterias = [];
-            storageMaterias.push(this.crearMateria('Frontend','Mariana','Lunes', 19, 21, 'Por hacer', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com']));
-            storageMaterias.push(this.crearMateria('Backend','Luis','Martes', 14, 16, 'Por hacer', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com']));
-            storageMaterias.push(this.crearMateria('Base de Datos','Laura','Miércoles', 18, 20, 'Por hacer', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com']));
-            storageMaterias.push(this.crearMateria('Testing','Jose','Jueves', 18, 20, 'Por hacer', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com']));
-            storageMaterias.push(this.crearMateria('Infraestructura','Belen','Viernes', 14, 18, 'Por hacer', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com']));
-            storageMaterias.push(this.crearMateria('Seguridad','Gaston','Lunes', 14, 16, 'Por hacer', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com']));
-            storageMaterias.push(this.crearMateria('Agile','Celeste','Martes', 20, 22, 'Por hacer', 0, [] , []));
+            storageMaterias.push(this.crearMateria('Frontend','Mariana','Lunes', 19, 21, 'Hecha', 2, ['Pepe Gonzalez', 'Abigail Paredes'] , ['pepeg@gmail.com', 'aparedes@gmail.com'], '2C23'));
+            storageMaterias.push(this.crearMateria('Backend','Luis','Martes', 14, 16, 'Por hacer', 7, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
+            storageMaterias.push(this.crearMateria('Base de Datos','Laura','Miércoles', 18, 20, 'Por hacer', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
+            storageMaterias.push(this.crearMateria('Testing','Jose','Jueves', 18, 20, 'Hecha', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
+            storageMaterias.push(this.crearMateria('Infraestructura','Belen','Viernes', 14, 18, 'Haciendo', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
+            storageMaterias.push(this.crearMateria('Seguridad','Gaston','Lunes', 14, 16, 'Hecha', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
+            storageMaterias.push(this.crearMateria('Agile','Celeste','Martes', 20, 22, 'Hecha', 0, [] , [], '2C23'));
+            storageMaterias.push(this.crearMateria('Historia del Arte','Ricardo','Martes', 6, 8, 'Hecha', 0, [] , [], '2C23'));
 
             localStorage.setItem('materiasList', JSON.stringify(storageMaterias));
         }
@@ -56,26 +57,28 @@ class Materias{
     }
 
     //funciones del Admin
-    crearMateria(nombre, docente, dia, horarioIni, horarioFin, habilitacion, cantInscritos, nombInscritos, emailInscritos){
+    crearMateria(nombre, docente, dia, horarioIni, horarioFin, habilitacion, cantInscritos, nombInscritos, emailInscritos, cuatrimestre){
         const materia = { id: Materias.generarID(), nombre, docente, dia, horarioIni, horarioFin, habilitacion, 
-            cantInscritos, nombInscritos, emailInscritos};
+            cantInscritos, nombInscritos, emailInscritos, cuatrimestre};
         return materia;
     }
 
     darAltaMateria() {
-        const materia= document.getElementById('input-materia').value;
-        const docente= document.getElementById('input-docente').value;
-        const horarioIni= document.getElementById('input-horario').value;
-        const horarioFin= document.getElementById('input-horario-fin').value;
-        const dia= document.getElementById('select-dias').value;
+        const materia = document.getElementById('input-materia').value;
+        const docente = document.getElementById('input-docente').value;
+        const horarioIni = document.getElementById('input-horario').value;
+        const horarioFin = document.getElementById('input-horario-fin').value;
+        const dia = document.getElementById('select-dias').value;
+        const cuatrimestre = document.getElementById('select-cuatrimestre').value;
         const mensaje = document.getElementById('div-mensajes');
         
         const storageMaterias = JSON.parse(localStorage.getItem('materiasList'));
         
-        if (storageMaterias && materia !== '' && docente !== '' && horarioIni && horarioFin ) {
+        if (storageMaterias && materia !== '' && docente !== '' && horarioIni && horarioFin) {
             
-            const nuevaMateria = this.crearMateria(materia, docente, dia, horarioIni, horarioFin, 'Por hacer', 0, [], []);
-            const materiaEncontrada = storageMaterias.find(m => m.nombre === materia && m.docente === docente && m.horarioIni === horarioIni && m.horarioFin === horarioFin);
+            const nuevaMateria = this.crearMateria(materia, docente, dia, horarioIni, horarioFin, 'Por hacer', 0, [], [], cuatrimestre);
+            const materiaEncontrada = storageMaterias.find(m => m.nombre === materia && m.docente === docente && m.dia === dia
+                && m.horarioIni === horarioIni && m.horarioFin === horarioFin && m.cuatrimestre === cuatrimestre);
 
             console.log(materiaEncontrada)
 
@@ -111,7 +114,6 @@ class Materias{
             materia.horarioFin = horarioFin;
             materia.habilitacion = habilitacion;
 
-
             localStorage.setItem('materiasList', JSON.stringify(storageMaterias));
 
             div_mensaje.style = 'background-color: green';
@@ -130,6 +132,7 @@ class Materias{
         // Se filtan las materias, solo quedan las que tienen el alumno inscrito
         if (loggedUser.rol === 'STUDENT') {
             lista_materias = lista_materias.filter(materia => materia.emailInscritos.includes(loggedUser.email));
+            this.listarMateriasDisponibles();
         }
 
         // Se limpian los datos que tenia la lista
@@ -183,12 +186,67 @@ class Materias{
         });
     }
 
+    listarMateriasDisponibles(){
+        const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+        if (loggedUser.rol === 'STUDENT') {
+            console.log('Listando materias disponibles...');
+            const materias_container = document.getElementById('lista_materias_disponibles');
+            let lista_materias = JSON.parse(localStorage.getItem('materiasList'));
+
+            // Se filtan las materias, solo quedan las que NO tienen el alumno inscrito
+            lista_materias = lista_materias.filter(materia => !materia.emailInscritos.includes(loggedUser.email));
+
+            // Se limpian los datos que tenia la lista
+            materias_container.innerHTML = '';
+
+            // Se listan las materias
+            lista_materias.forEach(materia => {
+                if (materia.cantInscritos < 7 && loggedUser.codCuatrimIni === materia.cuatrimestre && materia.habilitacion !== 'Por hacer') {
+
+                    const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+                    const container = document.createElement('div')
+                    const h4 = document.createElement('h4');
+                    const btn = document.createElement('button');
+                    const p_docente = document.createElement('p')
+                    const p_horario = document.createElement('p')
+    
+                    container.className = 'card_materia'
+    
+                    h4.innerHTML = materia.nombre;
+                    p_docente.innerHTML = materia.docente;
+                    p_horario.innerHTML = `${materia.dia} de ${materia.horarioIni} a ${materia.horarioFin} hrs ARG`;
+                    btn.innerHTML = 'Inscribirse';
+                    // btn.innerHTML = 'Ver mas';
+    
+                    btn.value = materia.id  // Aca va el id de cada materia
+    
+                    btn.addEventListener('click', e => {
+                        // Toma el id de la materia seleccionada
+                        const selectedID = e.target.value;
+    
+                        this.incripcionMateria(materia.id);
+                        this.listarMaterias();
+    
+                        console.log(`Selected id ${selectedID}, MATERIA_SELECCIONADA ${this.MATERIA_SELECCIONADA}`);
+                    });
+    
+                    container.appendChild(h4);
+                    container.appendChild(p_docente);
+                    container.appendChild(p_horario);
+                    container.appendChild(btn)
+                    materias_container.appendChild(container)
+                }
+            });
+        }
+    };
+
     cargarDatosForm(materia) {
         const in_materia = document.getElementById('input-materia');
         const in_docente = document.getElementById('input-docente');
         const in_horarioIni = document.getElementById('input-horario');
         const in_horarioFin = document.getElementById('input-horario-fin');
         const in_dia = document.getElementById('select-dias');
+        const in_cuatrimestre = document.getElementById('select-cuatrimestre');
         const in_habilitacion = document.getElementById('select-habilitacion');
         const div_listaAlumnos = document.getElementById('lista-alumnos');
     
@@ -198,6 +256,7 @@ class Materias{
             in_horarioIni.value = materia.horarioIni;
             in_horarioFin.value = materia.horarioFin;
             in_dia.value = materia.dia;
+            in_cuatrimestre.value = materia.cuatrimestre;
             in_habilitacion.value = materia.habilitacion;
             
             // Se genera el encabezado
@@ -217,6 +276,7 @@ class Materias{
             in_horarioIni.value = '';
             in_horarioFin.value = '';
             in_dia.value = 'Lunes';
+            in_cuatrimestre.value = '2C23';
             in_habilitacion.value = 'Por hacer';
             div_listaAlumnos.innerHTML = '';
         }
@@ -245,8 +305,27 @@ class Materias{
 
     //funciones de alumnos
 
-    incripcionMateria(){
+    incripcionMateria(id_materia){
+        const div_mensaje = document.getElementById('div-mensajes');
+        const storageMaterias = JSON.parse(localStorage.getItem('materiasList'));
+        const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+        const cuposDeMaterias = loggedUser.edad >= 35 ? 6 : 4; 
+        let materia = storageMaterias.find(mat => mat.id === id_materia);
+        let meteriasInscriptas = storageMaterias.filter(mat => mat.emailInscritos.includes(loggedUser.email));
+        console.log(meteriasInscriptas);
 
+        if (cuposDeMaterias > meteriasInscriptas.length) {
+            materia.nombInscritos.push(`${loggedUser.nombre} ${loggedUser.apellido}`);
+            materia.emailInscritos.push(loggedUser.email);
+            materia.cantInscritos += materia.cantInscritos;
+            localStorage.setItem('materiasList', JSON.stringify(storageMaterias));
+    
+            div_mensaje.style = 'background-color: green';
+            div_mensaje.innerHTML = 'Inscripcion realizada correctamente';
+        } else {
+            div_mensaje.style = 'background-color: red';
+            div_mensaje.innerHTML = 'No es posible inscribirse en mas materias';
+        }
     };
 
     darseDeBaja(id_materia){
@@ -270,11 +349,6 @@ class Materias{
         }
         
     };
-
-    visualizarInfoMateriasInscirpitas(){
-
-    };
-
 
     // fin de la clase
 }

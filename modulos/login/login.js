@@ -11,7 +11,8 @@ class Login {
             // Al instanciarse la clase, se guardan los usuarios en el local storage
             const usuarios = []
             usuarios.push(RegistroEstudiantil.crearUsuario('admin', 'c0ntr4s3ñ4', 'admin', '', 'ADMIN', 'admin@upsoa.com.ar'));
-            usuarios.push(RegistroEstudiantil.crearEstudiante('student', 'c0ntr4s3ñ4', 'Pepe', 'Gonzalez', 'STUDENT', 'pepeg@gmail.com', 25, 'Argentina', '1C23'));
+            usuarios.push(RegistroEstudiantil.crearEstudiante('student', 'c0ntr4s3ñ4', 'Pepe', 'Gonzalez', 'STUDENT', 'pepeg@gmail.com', 35, 'Argentina', '2C23'));
+            usuarios.push(RegistroEstudiantil.crearEstudiante('abi', 'c0ntr4s3ñ4', 'Abigail', 'Paredes', 'STUDENT', 'aparedes@gmail.com', 25, 'Argentina', '2C23'));
             localStorage.setItem('usersList', JSON.stringify(usuarios));
             RegistroEstudiantil.guardarUsuarioStorage(RegistroEstudiantil.crearUsuario('admin'))
         }
@@ -58,7 +59,7 @@ class Login {
 
         if (usuario && usuario.password === password) {
             return {valido: true, msg: "credenciales validas", usuario: {usuario: usuario.usuario, rol: usuario.rol, nombre: usuario.nombre, apellido: usuario.apellido
-            , email: usuario.email}};
+            , email: usuario.email, codCuatrimIni: usuario.codCuatrimIni, edad: usuario.edad}};
         }
 
         return {valido: false, msg: "usuario o contraseña incorrectos"};
