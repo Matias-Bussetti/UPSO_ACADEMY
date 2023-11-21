@@ -19,25 +19,10 @@
 
     <br>
 
-    <h1>Materias</h1>
+    <h2>Materias</h2>
+
     <div id="container_materias_admin">
 
-        <div id="lista_materias">
-            <!-- <div class="card_materia">
-             <div class="card_materia">
-
-                <h4>Frontend</h4>
-                <p>Prof.: Mariana</p>
-                <p>Lunes - 18 a 20hrs ARG</p>
-
-                <button value="0">Editar</button>
-            </div> -->
-        </div>
-        <hr>
-        <div id="lista_materias_disponibles">
-            
-        </div>
-        
         <div id="ab_materias">
             <form id="form_materias">
                 <label for="input-materia"> Materia</label>
@@ -48,9 +33,9 @@
                 
                 <input type="text" name="docente" id="input-docente" required>
                 <br>
-                <label for="input-horario"> Horario de</label>
+                <label for="input-horario"> Horario desde</label>
                 <input type="number" name="input-horario" id="input-horario" required>
-                <label for="input-horario-fin"> a</label>
+                <label for="input-horario-fin"> hasta</label>
                 <input type="number" name="input-horario-fin" id="input-horario-fin" required>
                 
                 <br>
@@ -85,14 +70,33 @@
 
                 <input type="submit" id="btn-alta" value="Dar Alta">
                 <br>
+
+                <a href="../registro/registro_estudiantil.html" id="link-registro">Registro Estudiantil</a>
             </form>
-        </div>
-        <div id="div-mensajes">
             
         </div>
-    </div>
+        <div id="div-mensajes"> </div>
 
-    <a href="../registro/registro_estudiantil.html" id="link-registro">Registro Estudiantil</a>
-</body>
+    <div id="lista_materias">
+
+        <div class="card_materia">
+
+            <!-- <div class="card_materia">
+
+                <h4>Frontend</h4>
+                <p>Prof.: Mariana</p>
+                <p>Lunes - 18 a 20hrs ARG</p>
+
+                <button value="0">Editar</button>
+            </div> -->
+
+        </div>
+
+    </div>
+        
+
+        <div id="lista_materias_disponibles"> </div>
+    
+</body>  
 <script src="materias.js"></script>
 </html>

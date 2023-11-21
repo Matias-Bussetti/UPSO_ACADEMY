@@ -21,7 +21,7 @@ class Materias{
             // Al instanciarse la clase, se guardan los usuarios en el local storage
             const storageMaterias = [];
             storageMaterias.push(this.crearMateria('Frontend','Mariana','Lunes', 19, 21, 'Hecha', 2, ['Pepe Gonzalez', 'Abigail Paredes'] , ['pepeg@gmail.com', 'aparedes@gmail.com'], '2C23'));
-            storageMaterias.push(this.crearMateria('Backend','Luis','Martes', 14, 16, 'Por hacer', 7, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
+            storageMaterias.push(this.crearMateria('Backend','Luis','Martes', 14, 16, 'Haciendo', 7, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
             storageMaterias.push(this.crearMateria('Base de Datos','Laura','Miércoles', 18, 20, 'Por hacer', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
             storageMaterias.push(this.crearMateria('Testing','Jose','Jueves', 18, 20, 'Hecha', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
             storageMaterias.push(this.crearMateria('Infraestructura','Belen','Viernes', 14, 18, 'Haciendo', 1, ['Pepe Gonzalez'] , ['pepeg@gmail.com'], '2C23'));
@@ -54,6 +54,26 @@ class Materias{
                 this.listarMaterias();
             }
         });
+
+        
+        //cerrar sesion
+
+        const btncerrar = document.getElementById('cerrar-sesion');
+
+        btncerrar.addEventListener('click', cerrarSesion);
+        
+        function cerrarSesion() {
+            const confirmacion = window.confirm('¿Deseas cerrar sesión?');
+        
+            if (confirmacion) {
+                // Redirigir al usuario al archivo index.html
+                window.location.href = 'http://127.0.0.1:5500/index.html'; 
+            }
+        }
+        
+
+
+
     }
 
     //funciones del Admin
@@ -150,9 +170,14 @@ class Materias{
             container.className = 'card_materia'
 
             h4.innerHTML = materia.nombre;
-            p_docente.innerHTML = materia.docente;
+            p_docente.innerHTML = "Profesor: " + materia.docente;
             p_horario.innerHTML = `${materia.dia} de ${materia.horarioIni} a ${materia.horarioFin} hrs ARG`;
             btn.innerHTML = loggedUser.rol === 'ADMIN' ? 'Ver mas' : 'Darse de baja';
+          
+
+           
+         
+            
             // btn.innerHTML = 'Ver mas';
 
             btn.value = materia.id  // Aca va el id de cada materia
@@ -291,8 +316,10 @@ class Materias{
         h4.innerHTML = 'Panel Estudiante';
         nombre.innerHTML = `${logUser.nombre} ${logUser.apellido}`;
         email.innerHTML = logUser.email;
+        
 
         container.append(nombre, email)
+    
     }
 
     //funcion reciclada

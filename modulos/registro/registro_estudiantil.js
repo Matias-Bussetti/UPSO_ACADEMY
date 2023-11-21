@@ -54,7 +54,7 @@ class RegistroEstudiantil {
         
             if (confirmacion) {
                 // Redirigir al usuario al archivo index.html
-                window.location.href = 'http://127.0.0.1:5500/index.html'; // Ruta relativa
+                window.location.href = 'http://127.0.0.1:5500/index.html'; 
             }
         }
         
