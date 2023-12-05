@@ -1,6 +1,6 @@
 function crearUsuario(usuario, password, nombre, apellido, rol, email) {
   const usr = {
-    id: this.generarID(),
+    id: generarID(),
     usuario,
     password,
     nombre,
@@ -22,14 +22,7 @@ function crearEstudiante(
   paisNac,
   codCuatrimIni
 ) {
-  const usr = this.crearUsuario(
-    usuario,
-    password,
-    nombre,
-    apellido,
-    rol,
-    email
-  );
+  const usr = crearUsuario(usuario, password, nombre, apellido, rol, email);
   usr.edad = edad;
   usr.paisNac = paisNac;
   usr.codCuatrimIni = codCuatrimIni;
@@ -43,3 +36,9 @@ function generarID() {
 
   return stringRandom;
 }
+
+module.exports = {
+  crearUsuario,
+  crearEstudiante,
+  generarID,
+};
